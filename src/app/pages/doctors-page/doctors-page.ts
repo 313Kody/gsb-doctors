@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { DoctorsService } from '../../services/doctors.service';
+import { Doctor } from '../../types/doctor.interface';
+import { DoctorCard } from '../../components/doctor-card/doctor-card'; // <-- add this
 
 @Component({
   selector: 'app-doctors-page',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, DoctorCard], // <-- include DoctorCard
   templateUrl: './doctors-page.html',
-  styleUrl: './doctors-page.css'
+  styleUrls: ['./doctors-page.css']
 })
-export class DoctorsPage {
+export class DoctorsPageComponent {
+  private doctorsService = inject(DoctorsService);
 
+  doctors = toSignal(this.doctorsService.getDoctors(), {
+    initialValue: [] as Doctor[]
+  });
 }

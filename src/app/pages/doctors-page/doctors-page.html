@@ -1,5 +1,3 @@
-<p>doctors-page works!</p>
-
-<section class="doctors-grid">
-  ...
-</section>
+<div class="doctors-list">
+  <app-doctor-card *ngFor="let d of doctors()" [doctor]="d"></app-doctor-card>
+</div>

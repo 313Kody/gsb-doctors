@@ -1,80 +1,129 @@
 .doctor-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 1rem;
-    border-radius: 0.875rem;
-    background: #ffffff;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    outline: 2px solid transparent;
-    outline-offset: 4px;
-  
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-    }
-  
-    &:focus-within {
-      outline: 2px solid #2563eb;
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e5e7eb;
+}
+
+.doctor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  border-color: #d1d5db;
+}
+
+.doctor-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.doctor-card__name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  color: #1f2937;
+  flex: 1;
+}
+
+.doctor-card__specialty-tag {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.813rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  flex-shrink: 0;
+  text-transform: capitalize;
+}
+
+.doctor-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.doctor-card__email {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.doctor-card__email a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-word;
+  transition: color 0.2s ease;
+}
+
+.doctor-card__email a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.doctor-card__address {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .doctor-card {
+    background: #1f2937;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border-color: #374151;
   }
-  
-  .doctor-card__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
+
+  .doctor-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    border-color: #4b5563;
   }
-  
+
   .doctor-card__name {
-    margin: 0;
-    font-weight: 700;
-    font-size: 1rem;
-    line-height: 1.25;
-    letter-spacing: 0.01em;
+    color: #f3f4f6;
   }
-  
-  .doctor-card__specialty-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.5rem;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: none;
-    background: #eef2ff;
-    color: #3730a3;
+
+  .doctor-card__body,
+  .doctor-card__email {
+    color: #d1d5db;
   }
-  
-  .doctor-card__body {
-    display: grid;
-    gap: 0.25rem;
-  }
-  
+
   .doctor-card__email a {
-    text-decoration: underline;
-    word-break: break-word;
-    overflow-wrap: anywhere;
+    color: #60a5fa;
   }
-  
+
+  .doctor-card__email a:hover {
+    color: #93c5fd;
+  }
+
   .doctor-card__address {
-    color: #475569;
-    margin: 0;
+    color: #9ca3af;
   }
-  
-  @media (prefers-color-scheme: dark) {
-    .doctor-card {
-      background: #0b0f19;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-    }
-    
-    .doctor-card__specialty-tag {
-      background: #1e293b;
-      color: #c7d2fe;
-    }
-    
-    .doctor-card__address {
-      color: #cbd5e1;
-    }
+}
+
+/* Responsive: stack on mobile if needed */
+@media (max-width: 640px) {
+  .doctor-card {
+    padding: 1rem;
   }
+
+  .doctor-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .doctor-card__specialty-tag {
+    align-self: flex-start;
+  }
+}
